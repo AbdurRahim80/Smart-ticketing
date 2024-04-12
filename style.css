@@ -18,3 +18,7 @@
     background: linear-gradient(180deg, rgba(3, 7, 18, 0.50) 0%, rgba(3, 7, 18, 0.00) 100%), url(<path-to-image>) lightgray 50% / cover no-repeat;
     
 }
+
+.seat-color{
+    background-color: #1DD100;
+}
