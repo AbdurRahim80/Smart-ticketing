@@ -4,7 +4,7 @@ for (const allSeat of allSeats) {
     allSeat.addEventListener("click", function (event) {
         seat += 1;
         if (seat > 4) {
-            alert("4 Not more than 4 tickets. more");
+            alert("Not more than 4 tickets.");
             return;
         }
         const applyBtn = document.getElementById("applyBtn");
