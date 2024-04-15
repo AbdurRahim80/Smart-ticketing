@@ -4,26 +4,24 @@ for (const allSeat of allSeats) {
     allSeat.addEventListener("click", function (event) {
         seat += 1;
         if (seat > 4) {
-            alert("4 any more");
+            alert("4 Not more than 4 tickets. more");
             return;
         }
         const applyBtn = document.getElementById("applyBtn");
-        if(seat == 4){
+        if (seat == 4) {
             applyBtn.removeAttribute("disabled", false);
         }
-        const phone = parseInt(document.getElementById("phone").value);
         
-        const email = document.getElementById("email").innerText;
-        // document.getElementById("phone").addEventListener("keyup",function(event){
-        //     console.log("even");
-        // })
-        // function phone(){
-        //     // const phone = document.getElementById("phone").value;
-        //     console.log("phone");
-        // }
+    
+        if (event.target.childNodes.length == 1) {
+            pho();
+        }
+
+        const phone = parseInt(document.getElementById("phone").value);
         const nextBtn = document.getElementById("next");
-        if (event.target.childNodes.length == 1 && typeof phone == "number" && !isNaN(phone)) {
+        if(event.target.childNodes.length == 1 && typeof phone == "number" && !isNaN(phone)){
             nextBtn.removeAttribute("disabled", true);
+
         }
         const busSeatName = event.target.innerText;
         const seatPrice = document.getElementById("setPrice").innerText;
@@ -45,35 +43,23 @@ for (const allSeat of allSeats) {
         total("total", parseInt(seatPrice))
         total("grandTotal", parseInt(seatPrice));
         setInnerText("setSeat", seat)
-        console.log(busSeatName)
-        // phone("phone", phone);
-
     })
 
 }
 
-// function discount(id, value){
-//     const setContainer = document.getElementById(id);
-//         const h3 = document.createElement("h3");
-//         h3.innerHTML = `
-//         <div class="grid grid-cols-3 justify-between  ">
-//             <h3>Discont</h3>
-//             <h3>${value}</h3>
-//             `
-//         setContainer.appendChild(h3);
-// }
-function cupupon(){
+
+function cupupon() {
     const copupon = document.getElementById("copupon").value;
     const total = document.getElementById("total").innerText;
     const grandTotal = document.getElementById("grandTotal").innerText;
     const copuponSection = document.getElementById("applyArear")
-    const newCopupon = total*15/100;
-    const coupleCopupon = total*20/100;
+    const newCopupon = total * 15 / 100;
+    const coupleCopupon = total * 20 / 100;
     const totalGrand1 = grandTotal - newCopupon;
     const totalGrand2 = grandTotal - coupleCopupon;
 
 
-    if(copupon == "NEW15"){
+    if (copupon == "NEW15") {
         const setContainer = document.getElementById("discount");
         const h3 = document.createElement("h3");
         h3.innerHTML = `
@@ -86,7 +72,7 @@ function cupupon(){
         document.getElementById("grandTotal").innerText = totalGrand1;
 
     }
-    else if ( copupon == "Couple 20"){
+    else if (copupon == "Couple 20") {
         const setContainer = document.getElementById("discount");
         const h3 = document.createElement("h3");
         h3.innerHTML = `
@@ -98,29 +84,24 @@ function cupupon(){
         copuponSection.style.display = "none";
         document.getElementById("grandTotal").innerText = totalGrand2;
 
-    }else{
+    } else {
         alert("Enter valid copupon");
     }
 
 }
 
+function pho() {
+    document.getElementById("phone").addEventListener("keyup", function (event) {
+        const phone = parseInt(event.target.value);
+        const nextBtn = document.getElementById("next");
+        if (typeof phone == "number" && !isNaN(phone)) {
+            nextBtn.removeAttribute("disabled", true);
+        }
 
-// document.getElementById("phone").addEventListener("keyup",function(event){
-//     console.log(event);
-// })
-
-function phone(id, value) {
-    document.getElementById(id).addEventListener("keyup", function (event) {
-        // console.log(event.target.value)
-        let phone = parseInt(event.target.value);
-            phone = value;
-        // console.log(phone)
-        // return phone;
     })
 }
 
-// phone("phone", phone);
-// set innerText 
+
 function setInnerText(id, value) {
     document.getElementById(id).innerText = value;
 }
